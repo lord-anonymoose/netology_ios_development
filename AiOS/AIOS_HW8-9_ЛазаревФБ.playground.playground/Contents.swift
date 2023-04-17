@@ -1,5 +1,18 @@
 import Foundation
 
+func addDelay() {
+    print(".")
+    print("..")
+    print("...")
+    sleep(3)
+}
+
+func addOutputSpace() {
+    print("")
+    print("")
+    print("")
+}
+
 // Basic measures
 struct Year: Equatable {
     let rawValue: Int
@@ -135,7 +148,14 @@ class AnyWarehouse: Warehouse {
     var stockCars: [AnyCar]
     
     func orderCar(_ car: AnyCar) {
-        self.stockCars.append(AnyCar(manufacturer: car.manufacturer, model: car.model, color: car.color, price: car.price, accessories: car.accessories, isServiced: car.isServiced))
+        if self.stockCars.count < self.capacity {
+            print("Ordered car \(car.manufacturer.rawValue) \(car.model) for \(self.name).")
+            addDelay()
+            self.stockCars.append(AnyCar(manufacturer: car.manufacturer, model: car.model, color: car.color, price: car.price, accessories: car.accessories, isServiced: car.isServiced))
+            print("\(car.manufacturer.rawValue) \(car.model) is now in \(self.name).")
+        } else {
+            print("\(self.name) is overloaded. Please, send some cars to dealership showrooms to complete a new order.")
+        }
     }
     
     init(name: String, capacity: Int, stockCars: [AnyCar]) {
@@ -145,7 +165,7 @@ class AnyWarehouse: Warehouse {
     }
 }
 
-var warehouse = AnyWarehouse(name: "Main Warehouse", capacity: 1000, stockCars: [car1, car2, car3, car4, car5, car6, car7, car8, car9, car10, car11, car12])
+var warehouse = AnyWarehouse(name: "Main Warehouse", capacity: 1000, stockCars: [car1, car2, car3, car4, car5, car6, car7, car8, car9, car10])
 
 
 
@@ -160,7 +180,7 @@ protocol Dealership {
     func presaleService(for car: AnyCar)
     func addToShowroom(_ car: AnyCar, from warehouse: AnyWarehouse)
     func sellCar(_ car: AnyCar)
-    func orderCar(_ car: AnyCar)
+    // func orderCar is designed for Warehouse protocol, not Dealership office
 }
 
 class AnyDealership: Dealership {
@@ -175,7 +195,7 @@ class AnyDealership: Dealership {
             print("No accessories to offer!")
         } else {
             var index: Int = -1
-            for i in 0...self.stockCars.count - 1 {
+            for i in 0..<self.stockCars.count {
                 if self.stockCars[i] == car {
                     index = i
                 }
@@ -200,7 +220,7 @@ class AnyDealership: Dealership {
     // Done
     func presaleService(for car: AnyCar) {
         var index: Int = -1
-        for i in 0...self.stockCars.count - 1 {
+        for i in 0..<self.stockCars.count {
             if self.stockCars[i] == car {
                 index = i
             }
@@ -209,7 +229,7 @@ class AnyDealership: Dealership {
         if !car.isServiced {
             print("\(car.manufacturer.rawValue) \(car.model) is sent for presale service.")
             print("Doing presale service...")
-            sleep(3)
+            addDelay()
             newCar.isServiced.toggle()
             self.stockCars[index] = newCar
             print("\(car.manufacturer.rawValue) \(car.model) is successfully serviced.")
@@ -232,20 +252,11 @@ class AnyDealership: Dealership {
     
     // Done
     func sellCar(_ car: AnyCar) {
-        if let index = stockCars.firstIndex(of: car) {
-            stockCars.remove(at: index)
+        if let index = self.stockCars.firstIndex(of: car) {
+            self.stockCars.remove(at: index)
             print("\(car.manufacturer.rawValue) \(car.model) is sold! Congratulations on your new purchase!")
         } else {
             print("Unfortunately, we don't have \(car.manufacturer.rawValue) \(car.model) in our showroom at the moment")
-
-        }
-    }
-    
-    func orderCar(_ car: AnyCar) {
-        if stockCars.count < showroomCapacity {
-            print("Ordered \(car.manufacturer.rawValue) \(car.model) for our showroom...")
-            sleep(5)
-            print("\(car.manufacturer.rawValue) \(car.model) has arrived!")
         }
     }
     
@@ -267,26 +278,97 @@ var austin = AnyDealership(name: "Austin Dealership", showroomCapacity: 30, stoc
 
 var washington = AnyDealership(name: "Washington Dealership", showroomCapacity: 20, stockCars: [], motto: "Find your drive with us.")
 
+addOutputSpace()
+
+// Dealerships mottos
+print("Dealerships mottos: ")
+let dealerships = [newYork, losAngeles, cupertino, austin, washington]
+for dealership in dealerships {
+    print("\(dealership.name): \(dealership.motto)")
+}
+
+for i in 0..<dealerships.count {
+    var newStockCars = dealerships[i].stockCars
+    for j in 0..<newStockCars.count {
+        var newCar = newStockCars[j]
+        newCar.makeSpecialOffer()
+        newStockCars[j] = newCar
+    }
+    dealerships[i].stockCars = newStockCars
+}
+
+print(warehouse.stockCars.count)
+
+for i in 0..<warehouse.stockCars.count {
+    var newCar = warehouse.stockCars[i]
+    newCar.makeSpecialOffer()
+}
+
+addOutputSpace()
+
 // Debugging
-// addToShowroom
-print(car1.id)
+
+// addToShowroom()
+print("addToShowroom() check...")
+print("Dealership.stockCars.count before addToShowroom(): \(newYork.stockCars.count)")
+print("Warehouse.stockCars.count before addToShowroom(): \(warehouse.stockCars.count)")
 newYork.addToShowroom(car1, from: warehouse)
-print(newYork.stockCars)
+print("Dealership.stockCars.count after addToShowroom(): \(newYork.stockCars.count)")
+print("Warehouse.stockCars.count after addToShowroom(): \(warehouse.stockCars.count)")
 
-// offerAccessories
-print(newYork.stockCars[0].price)
-print(newYork.stockCars[0].accessories)
+addOutputSpace()
+
+// offerAccessories()
+print("offerAccessories() debugging...")
+print("Car.price before offerAccessories(): \(newYork.stockCars[0].price)")
+print("Car.accessories.count before offerAccessories(): \(newYork.stockCars[0].accessories.count)")
 newYork.offerAccessories([.tinting], for: car1)
-print(newYork.stockCars[0].price)
-print(newYork.stockCars[0].accessories)
+print("Car.price after offerAccessories(): \(newYork.stockCars[0].price)")
+print("Car.accessories.count after offerAccessories(): \(newYork.stockCars[0].accessories.count)")
 
-// presaleService
-print(newYork.stockCars[0].isServiced)
+addOutputSpace()
+
+// presaleService()
+print("presaleService() debugging...")
+print("Car.isServiced before presaleService(): \(newYork.stockCars[0].isServiced)")
 newYork.presaleService(for: newYork.stockCars[0])
-print(newYork.stockCars[0].isServiced)
+print("Car.isServiced after presaleService(): \(newYork.stockCars[0].isServiced)")
 
-// sellCar
-print(newYork.stockCars)
+addOutputSpace()
+
+// sellCar()
+print("sellCar() debugging...")
+print("Dealership.stockCars.count before sellCar(): \(newYork.stockCars.count)")
 newYork.sellCar(newYork.stockCars[0])
-print(newYork.stockCars)
+print("Dealership.stockCars.count after sellCar(): \(newYork.stockCars.count)")
 
+addOutputSpace()
+
+// orderCar()
+print("orderCar() debugging...")
+print("Warehouse.stockCars.count before orderCar(): \(warehouse.stockCars.count)")
+warehouse.orderCar(car11)
+print("Warehouse.stockCars.count after orderCar(): \(warehouse.stockCars.count)")
+
+addOutputSpace()
+
+// makeSpecialOffer()
+print("makeSpecialOffer() debugging...")
+print("First case:")
+newYork.addToShowroom(car9, from: warehouse)
+print("Car.price before makeSpecialOffer(): \(newYork.stockCars[0].price)")
+print(newYork.stockCars[0].makeSpecialOffer())
+print("Car.price after makeSpecialOffer(): \(newYork.stockCars[0].price)")
+print("Second case:")
+newYork.addToShowroom(car3, from: warehouse)
+print("Car.price before makeSpecialOffer(): \(newYork.stockCars[1].price)")
+print(newYork.stockCars[1].makeSpecialOffer())
+print("Car.price after makeSpecialOffer(): \(newYork.stockCars[1].price)")
+
+addOutputSpace()
+
+// addEmergencyPack()
+print("addEmergencyPack() debugging...")
+print("Emergency pack in a car before addEmergencyPack(): \(newYork.stockCars[0].accessories.contains(.emergencyPack))")
+newYork.stockCars[0].addEmergencyPack()
+print("Emergency pack in a car after addEmergencyPack(): \(newYork.stockCars[0].accessories.contains(.emergencyPack))")
