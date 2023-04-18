@@ -1,5 +1,20 @@
 import Foundation
 
+enum carError: Error {
+    case notForSale
+    case hasAccessory
+}
+
+enum warehouseError: Error {
+    case overloaded
+    case noCar
+}
+
+enum dealershipError: Error {
+    case overloaded
+    case noCar
+}
+
 func addDelay() {
     print(".")
     print("..")
@@ -13,7 +28,6 @@ func addOutputSpace() {
     print("")
 }
 
-// Basic measures
 struct Year: Equatable {
     let rawValue: Int
     
@@ -61,7 +75,6 @@ enum Manufacturer: String {
 
 
 
-// Car
 protocol Car {
     var manufacturer: Manufacturer { get }
     var model: String { get }
@@ -73,22 +86,20 @@ protocol Car {
 }
 
 extension Car {
-    mutating func addEmergencyPack() {
-        if !(self.accessories.contains(.emergencyPack)) {
-            self.accessories.append(.emergencyPack)
-            print("Emergency pack has been added to \(self.manufacturer.rawValue) \(self.model) Accessory Package.")
-        } else {
-            print("\(self.manufacturer.rawValue) \(self.model) Accessory Package already includes an Emergency Pack.")
+    mutating func addEmergencyPack() throws {
+        guard !(self.accessories.contains(.emergencyPack)) else {
+            throw carError.hasAccessory
         }
+        self.accessories.append(.emergencyPack)
+        print("Emergency pack has been added to \(self.manufacturer.rawValue) \(self.model) Accessory Package.")
     }
     
-    mutating func makeSpecialOffer() {
-        if self.buildDate == Year(2022) {
-            self.price = self.price * 0.85
-            print("\(self.manufacturer.rawValue) \(self.model) has been discounted to a new price: \(self.price).")
-        } else {
-            print("\(self.manufacturer.rawValue) \(self.model) does not conform to discounting policies.")
+    mutating func makeSpecialOffer() throws {
+        guard self.buildDate == Year(2022) else {
+            throw carError.notForSale
         }
+        self.price = self.price * 0.85
+        print("\(self.manufacturer.rawValue) \(self.model) has been discounted to a new price: \(self.price).")
     }
 }
 
@@ -133,13 +144,12 @@ var car12 = AnyCar(manufacturer: .kia, model: "S-Class 580 Long 4MATIC", color: 
 
 
 
-// Warehouse
 protocol Warehouse {
     var name: String { get }
     var capacity: Int { get set }
     var stockCars: [AnyCar] { get set }
     
-    func orderCar(_ car: AnyCar)
+    func orderCar(_ car: AnyCar) throws
 }
 
 class AnyWarehouse: Warehouse {
@@ -147,15 +157,14 @@ class AnyWarehouse: Warehouse {
     var capacity: Int
     var stockCars: [AnyCar]
     
-    func orderCar(_ car: AnyCar) {
-        if self.stockCars.count < self.capacity {
-            print("Ordered car \(car.manufacturer.rawValue) \(car.model) for \(self.name).")
-            addDelay()
-            self.stockCars.append(AnyCar(manufacturer: car.manufacturer, model: car.model, color: car.color, price: car.price, accessories: car.accessories, isServiced: car.isServiced))
-            print("\(car.manufacturer.rawValue) \(car.model) is now in \(self.name).")
-        } else {
-            print("\(self.name) is overloaded. Please, send some cars to dealership showrooms to complete a new order.")
+    func orderCar(_ car: AnyCar) throws {
+        guard self.stockCars.count < self.capacity else {
+            throw warehouseError.overloaded
         }
+        print("Ordered car \(car.manufacturer.rawValue) \(car.model) for \(self.name).")
+        addDelay()
+        self.stockCars.append(AnyCar(manufacturer: car.manufacturer, model: car.model, color: car.color, price: car.price, accessories: car.accessories, isServiced: car.isServiced))
+        print("\(car.manufacturer.rawValue) \(car.model) is now in \(self.name).")
     }
     
     init(name: String, capacity: Int, stockCars: [AnyCar]) {
@@ -169,7 +178,6 @@ var warehouse = AnyWarehouse(name: "Main Warehouse", capacity: 1000, stockCars: 
 
 
 
-// Dealership
 protocol Dealership {
     var name: String { get }
     var showroomCapacity: Int { get set }
@@ -178,7 +186,7 @@ protocol Dealership {
     
     func offerAccessories(_ accessories: [Accessory], for car: AnyCar)
     func presaleService(for car: AnyCar)
-    func addToShowroom(_ car: AnyCar, from warehouse: AnyWarehouse)
+    func addToShowroom(_ car: AnyCar, from warehouse: AnyWarehouse) throws
     func sellCar(_ car: AnyCar)
     // func orderCar is designed for Warehouse protocol, not Dealership office
 }
@@ -239,15 +247,15 @@ class AnyDealership: Dealership {
     }
     
     // Done
-    func addToShowroom(_ car: AnyCar, from warehouse: AnyWarehouse) {
-        let i = warehouse.stockCars.firstIndex(of: car)
-        if let i = warehouse.stockCars.firstIndex(of: car) {
-            warehouse.stockCars.remove(at: i)
-            self.stockCars.append(car)
-        } else {
-            print("\(car.manufacturer) \(car.model) is not found in our warehouse.")
+    func addToShowroom(_ car: AnyCar, from warehouse: AnyWarehouse) throws {
+        guard let i = warehouse.stockCars.firstIndex(of: car) else {
+            throw warehouseError.noCar
         }
-        print("")
+        guard self.stockCars.count < self.showroomCapacity else {
+            throw dealershipError.overloaded
+        }
+        warehouse.stockCars.remove(at: i)
+        self.stockCars.append(car)
     }
     
     // Done
@@ -278,9 +286,12 @@ var austin = AnyDealership(name: "Austin Dealership", showroomCapacity: 30, stoc
 
 var washington = AnyDealership(name: "Washington Dealership", showroomCapacity: 20, stockCars: [], motto: "Find your drive with us.")
 
+
+
 addOutputSpace()
 
-// Dealerships mottos
+
+
 print("Dealerships mottos: ")
 let dealerships = [newYork, losAngeles, cupertino, austin, washington]
 for dealership in dealerships {
@@ -291,8 +302,12 @@ for i in 0..<dealerships.count {
     var newStockCars = dealerships[i].stockCars
     for j in 0..<newStockCars.count {
         var newCar = newStockCars[j]
-        newCar.makeSpecialOffer()
-        newStockCars[j] = newCar
+        do {
+            try newCar.makeSpecialOffer()
+            newStockCars[j] = newCar
+        } catch carError.notForSale {
+            print("\(newCar.manufacturer.rawValue) \(newCar.model) does not conform to discounting policies.")
+        }
     }
     dealerships[i].stockCars = newStockCars
 }
@@ -301,74 +316,151 @@ print(warehouse.stockCars.count)
 
 for i in 0..<warehouse.stockCars.count {
     var newCar = warehouse.stockCars[i]
-    newCar.makeSpecialOffer()
+    do {
+        try newCar.makeSpecialOffer()
+    } catch carError.notForSale {
+        print("\(newCar.manufacturer.rawValue) \(newCar.model) does not conform to discounting policies.")
+    }
 }
+
+
 
 addOutputSpace()
 
-// Debugging
 
-// addToShowroom()
+
 print("addToShowroom() check...")
 print("Dealership.stockCars.count before addToShowroom(): \(newYork.stockCars.count)")
 print("Warehouse.stockCars.count before addToShowroom(): \(warehouse.stockCars.count)")
-newYork.addToShowroom(car1, from: warehouse)
+
+do {
+    try newYork.addToShowroom(car1, from: warehouse)
+} catch warehouseError.noCar {
+    print("\(car1.manufacturer) \(car1.model) is not found in our warehouse.")
+} catch dealershipError.overloaded {
+    print("\(newYork.name) is overloaded!")
+}
+
 print("Dealership.stockCars.count after addToShowroom(): \(newYork.stockCars.count)")
 print("Warehouse.stockCars.count after addToShowroom(): \(warehouse.stockCars.count)")
 
+
+
 addOutputSpace()
 
-// offerAccessories()
+
+
 print("offerAccessories() debugging...")
 print("Car.price before offerAccessories(): \(newYork.stockCars[0].price)")
 print("Car.accessories.count before offerAccessories(): \(newYork.stockCars[0].accessories.count)")
+
 newYork.offerAccessories([.tinting], for: car1)
+
 print("Car.price after offerAccessories(): \(newYork.stockCars[0].price)")
 print("Car.accessories.count after offerAccessories(): \(newYork.stockCars[0].accessories.count)")
 
+
+
 addOutputSpace()
 
-// presaleService()
+
+
 print("presaleService() debugging...")
 print("Car.isServiced before presaleService(): \(newYork.stockCars[0].isServiced)")
+
 newYork.presaleService(for: newYork.stockCars[0])
+
 print("Car.isServiced after presaleService(): \(newYork.stockCars[0].isServiced)")
 
+
+
 addOutputSpace()
 
-// sellCar()
+
+
 print("sellCar() debugging...")
 print("Dealership.stockCars.count before sellCar(): \(newYork.stockCars.count)")
+
 newYork.sellCar(newYork.stockCars[0])
+
 print("Dealership.stockCars.count after sellCar(): \(newYork.stockCars.count)")
 
+
+
 addOutputSpace()
 
-// orderCar()
+
+
 print("orderCar() debugging...")
 print("Warehouse.stockCars.count before orderCar(): \(warehouse.stockCars.count)")
-warehouse.orderCar(car11)
+
+do {
+    try warehouse.orderCar(car11)
+} catch warehouseError.overloaded {
+    print("\(warehouse.name) is overloaded. Please, send some cars to dealership showrooms to complete a new order.")
+}
+
 print("Warehouse.stockCars.count after orderCar(): \(warehouse.stockCars.count)")
 
+
+
 addOutputSpace()
 
-// makeSpecialOffer()
+
+
 print("makeSpecialOffer() debugging...")
 print("First case:")
-newYork.addToShowroom(car9, from: warehouse)
+
+do {
+    try newYork.addToShowroom(car9, from: warehouse)
+} catch warehouseError.noCar {
+    print("\(car9.manufacturer) \(car9.model) is not found in our warehouse.")
+} catch dealershipError.overloaded {
+    print("\(newYork.name) is overloaded!")
+}
+
 print("Car.price before makeSpecialOffer(): \(newYork.stockCars[0].price)")
-print(newYork.stockCars[0].makeSpecialOffer())
+
+do {
+    try newYork.stockCars[0].makeSpecialOffer()
+} catch carError.notForSale {
+    print("\(newYork.stockCars[0].manufacturer.rawValue) \(newYork.stockCars[0].model) does not conform to discounting policies.")
+}
+
 print("Car.price after makeSpecialOffer(): \(newYork.stockCars[0].price)")
+
+
+
+
 print("Second case:")
-newYork.addToShowroom(car3, from: warehouse)
+
+do {
+    try newYork.addToShowroom(car3, from: warehouse)
+} catch warehouseError.noCar {
+    print("\(car3.manufacturer) \(car3.model) is not found in our warehouse.")
+} catch dealershipError.overloaded {
+    print("\(newYork.name) is overloaded!")
+}
+
 print("Car.price before makeSpecialOffer(): \(newYork.stockCars[1].price)")
-print(newYork.stockCars[1].makeSpecialOffer())
+
+do {
+    try newYork.stockCars[1].makeSpecialOffer()
+} catch carError.notForSale {
+    print("\(newYork.stockCars[1].manufacturer.rawValue) \(newYork.stockCars[1].model) does not conform to discounting policies.")
+}
+
 print("Car.price after makeSpecialOffer(): \(newYork.stockCars[1].price)")
 
-addOutputSpace()
 
-// addEmergencyPack()
+
 print("addEmergencyPack() debugging...")
 print("Emergency pack in a car before addEmergencyPack(): \(newYork.stockCars[0].accessories.contains(.emergencyPack))")
-newYork.stockCars[0].addEmergencyPack()
+
+do {
+    try newYork.stockCars[0].addEmergencyPack()
+} catch carError.hasAccessory {
+    print("\(newYork.stockCars[0].manufacturer.rawValue) \(newYork.stockCars[0].model) Accessory Package already includes an Emergency Pack.")
+}
+
 print("Emergency pack in a car after addEmergencyPack(): \(newYork.stockCars[0].accessories.contains(.emergencyPack))")
