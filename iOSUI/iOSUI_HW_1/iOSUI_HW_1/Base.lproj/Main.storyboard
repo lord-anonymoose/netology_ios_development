@@ -47,7 +47,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <string key="text">“Companies that get confused, that think their goal is revenue or stock price or something. You have to focus on the things that lead to those.”</string>
                                 <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
@@ -68,6 +68,13 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yNH-WZ-SdP" secondAttribute="trailing" constant="10" id="zwe-30-Wdi"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="birthdateView" destination="owo-iF-TcQ" id="Blr-vf-KMR"/>
+                        <outlet property="cityView" destination="jTF-A9-EVn" id="cIG-GM-Yak"/>
+                        <outlet property="imageView" destination="pc0-8W-uyS" id="SHp-kw-AYB"/>
+                        <outlet property="nameView" destination="6O3-TJ-Br3" id="6hg-C5-TFS"/>
+                        <outlet property="textView" destination="yNH-WZ-SdP" id="7Lz-YX-Gkn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
