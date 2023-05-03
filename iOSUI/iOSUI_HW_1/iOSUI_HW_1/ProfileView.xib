@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ProfileView" customModule="iOSUI_HW_1" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tcook" translatesAutoresizingMaskIntoConstraints="NO" id="BXZ-22-2um">
+                    <rect key="frame" x="30" y="99" width="150" height="150"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="150" id="MNq-cx-eRV"/>
+                        <constraint firstAttribute="height" constant="150" id="Na2-a5-6EZ"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Imq-Lh-2mU">
+                    <rect key="frame" x="215" y="99" width="148" height="34"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="28"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="birthdateLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kuu-0a-BHU">
+                    <rect key="frame" x="232" y="163" width="114" height="21"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cityLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="asZ-oa-n33">
+                    <rect key="frame" x="253.66666666666663" y="214" width="71" height="21"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6p1-Gz-fZq">
+                    <rect key="frame" x="10" y="269" width="373" height="549"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <string key="text">“Companies that get confused, that think their goal is revenue or stock price or something. You have to focus on the things that lead to those.”</string>
+                    <color key="textColor" systemColor="labelColor"/>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="kuu-0a-BHU" firstAttribute="centerX" secondItem="Imq-Lh-2mU" secondAttribute="centerX" id="25F-pw-OVO"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="6p1-Gz-fZq" secondAttribute="trailing" constant="10" id="64B-Ug-1v9"/>
+                <constraint firstItem="BXZ-22-2um" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="40" id="8qj-e8-1it"/>
+                <constraint firstItem="asZ-oa-n33" firstAttribute="top" secondItem="kuu-0a-BHU" secondAttribute="bottom" constant="30" id="EHX-6o-IG7"/>
+                <constraint firstItem="asZ-oa-n33" firstAttribute="centerX" secondItem="kuu-0a-BHU" secondAttribute="centerX" id="ET6-o8-dId"/>
+                <constraint firstItem="kuu-0a-BHU" firstAttribute="top" secondItem="Imq-Lh-2mU" secondAttribute="bottom" constant="30" id="Mtm-q1-bLg"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Imq-Lh-2mU" secondAttribute="trailing" constant="30" id="OTM-Gh-LIN"/>
+                <constraint firstItem="Imq-Lh-2mU" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="40" id="diJ-GZ-dr0"/>
+                <constraint firstItem="6p1-Gz-fZq" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="iFx-WK-rhx"/>
+                <constraint firstItem="6p1-Gz-fZq" firstAttribute="top" secondItem="BXZ-22-2um" secondAttribute="bottom" constant="20" id="kw9-kp-aNg"/>
+                <constraint firstItem="BXZ-22-2um" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="r1o-sX-ZEB"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="6p1-Gz-fZq" secondAttribute="bottom" id="r66-g2-lNj"/>
+            </constraints>
+            <connections>
+                <outlet property="birthdateView" destination="kuu-0a-BHU" id="hqs-Dh-KlQ"/>
+                <outlet property="cityView" destination="asZ-oa-n33" id="Mkp-T7-Dqo"/>
+                <outlet property="imageView" destination="BXZ-22-2um" id="DgR-7S-G5t"/>
+                <outlet property="nameView" destination="Imq-Lh-2mU" id="ceD-GB-vF4"/>
+                <outlet property="textView" destination="6p1-Gz-fZq" id="QkC-yi-jkz"/>
+            </connections>
+            <point key="canvasLocation" x="-124.42748091603053" y="19.718309859154932"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="tcook" width="594" height="596"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
