@@ -42,26 +42,30 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qZI-fM-QYf">
-                                <rect key="frame" x="175.66666666666666" y="279" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="yNH-WZ-SdP">
+                                <rect key="frame" x="10" y="289" width="373" height="529"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <string key="text">“Companies that get confused, that think their goal is revenue or stock price or something. You have to focus on the things that lead to those.”</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="yNH-WZ-SdP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="7tv-Dm-dJB"/>
                             <constraint firstItem="pc0-8W-uyS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="8r8-Qc-vsp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="yNH-WZ-SdP" secondAttribute="bottom" id="HRI-i7-Uae"/>
                             <constraint firstItem="pc0-8W-uyS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="IYa-pc-Dis"/>
-                            <constraint firstItem="qZI-fM-QYf" firstAttribute="top" secondItem="pc0-8W-uyS" secondAttribute="bottom" constant="20" id="QSE-OH-jbk"/>
-                            <constraint firstItem="qZI-fM-QYf" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="UjN-w3-nac"/>
+                            <constraint firstItem="yNH-WZ-SdP" firstAttribute="top" secondItem="pc0-8W-uyS" secondAttribute="bottom" constant="30" id="Y1N-Vk-WJN"/>
                             <constraint firstItem="owo-iF-TcQ" firstAttribute="centerX" secondItem="6O3-TJ-Br3" secondAttribute="centerX" id="bDk-d4-bC5"/>
                             <constraint firstItem="6O3-TJ-Br3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="bQQ-GU-mpG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6O3-TJ-Br3" secondAttribute="trailing" constant="60" id="naP-3u-pN6"/>
                             <constraint firstItem="owo-iF-TcQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="105" id="p48-7F-cdK"/>
                             <constraint firstItem="jTF-A9-EVn" firstAttribute="centerX" secondItem="owo-iF-TcQ" secondAttribute="centerX" id="rIz-JM-pMW"/>
                             <constraint firstItem="jTF-A9-EVn" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="150" id="voQ-HV-4hU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yNH-WZ-SdP" secondAttribute="trailing" constant="10" id="zwe-30-Wdi"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -72,6 +76,9 @@
     </scenes>
     <resources>
         <image name="tcook" width="594" height="596"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
