@@ -9,12 +9,18 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
-    private var profileView: ProfileView! // создаем переменную для дальнейшего использования
+    private var profileView: ProfileView!
   
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let textColor = UIColor(named: "textColor")
+        
+        /*
+         Этот код загружает экземпляр визуального интерфейса, который был создан в Interface Builder с использованием nib-файла (файла XIB). Он использует объект Bundle для загрузки nib-файла "ProfileView" и передает текущий объект владельца ("owner") как self. Затем он пытается произвести приведение типов, чтобы убедиться, что экземпляр, который был загружен из nib-файла, действительно является экземпляром класса ProfileView.
+
+         Затем настраивается фрейм (размер и положение) профиля на основе фрейма представления (view) и устанавливается autoresizingMask, чтобы профиль масштабировался и изменял свой размер при изменении размера родительского представления.
+         */
         
         guard let profileView = Bundle.main.loadNibNamed("ProfileView", owner: self, options: nil)?.first as? ProfileView else {
             fatalError("Unable to load ProfileView from nib")
@@ -37,6 +43,6 @@ class ProfileViewController: UIViewController {
         profileView.cityView?.attributedText = imageString
         
         view.addSubview(profileView)
-        self.profileView = profileView // присваиваем значение созданной переменной
+        self.profileView = profileView
     }
 }
