@@ -2,28 +2,34 @@
 //  ProfileViewController.swift
 //  iOSUI_HW_2
 //
-//  Created by Philipp Lazarev on 06.05.2023.
+//  Created by Philipp Lazarev on 12.05.2023.
 //
 
 import UIKit
 
 class ProfileViewController: UIViewController {
-
+    private var profileView: ProfileView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        var user: User
+        if let randomElement = users.randomElement() {
+            user = randomElement
+        } else {
+            user = User(login: "default", name: "default")
+        }
+        
+        guard let profileView = Bundle.main.loadNibNamed("profileView", owner: self, options: nil)?.first as? ProfileView else {
+                    fatalError("Unable to load ProfileView from nib")
+                }
+        
+        profileView.frame = view.bounds
+        profileView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        profileView.userLogin?.text = "@\(user.login)"
+        profileView.userName.text = user.name
+        profileView.userImageView?.image = UIImage(named: user.login)
+        view.addSubview(profileView)
+        self.profileView = profileView
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

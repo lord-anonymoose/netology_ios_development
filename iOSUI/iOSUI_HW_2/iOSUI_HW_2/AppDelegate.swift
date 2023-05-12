@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  iOSUI_HW_2
 //
-//  Created by Philipp Lazarev on 06.05.2023.
+//  Created by Philipp Lazarev on 12.05.2023.
 //
 
 import UIKit

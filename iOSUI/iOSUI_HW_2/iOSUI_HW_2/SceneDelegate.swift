@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  iOSUI_HW_2
 //
-//  Created by Philipp Lazarev on 06.05.2023.
+//  Created by Philipp Lazarev on 12.05.2023.
 //
 
 import UIKit
@@ -14,18 +14,36 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
-        
+                        
         let window = UIWindow(windowScene: scene)
+                    
+        let feedViewController = ViewController()
+        feedViewController.title = "Home"
+        feedViewController.view.backgroundColor = .systemOrange
+        let feedImage = UIImage(systemName: "house.circle")
+            
+        let profileViewController = ProfileViewController()
+        profileViewController.title = "Profile"
+        profileViewController.view.backgroundColor = .systemYellow
+        let profileImage = UIImage(systemName: "person.circle")
+                    
+        let tabBarController = UITabBarController()
+                        
+        feedViewController.tabBarItem = UITabBarItem(title: nil, image: feedImage, tag: 0)
+        profileViewController.tabBarItem = UITabBarItem(title: nil, image: profileImage, tag: 0)
+                        
+        let controllers = [feedViewController, profileViewController]
+        tabBarController.viewControllers = controllers.map {
+            UINavigationController(rootViewController: $0)
+        }
+                
+        tabBarController.selectedIndex = 0
         
-        let viewController = ViewController()
-        
-        let navigationController = UINavigationController(rootViewController: viewController)
-        
-        window.rootViewController = navigationController
-        
+        window.rootViewController = tabBarController
         window.makeKeyAndVisible()
-        
+                
         self.window = window
+
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
