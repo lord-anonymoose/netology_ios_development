@@ -36,6 +36,5 @@ class InfoViewController: UIViewController {
         alertController.addAction(badAction)
         present(alertController, animated: true, completion: nil)
         
-
     }
 }
