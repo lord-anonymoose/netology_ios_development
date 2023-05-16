@@ -27,7 +27,6 @@ var lisaJackson = User(login: "lisapjackson", name: "Lisa P. Jackson")
 var defaultUser = User(login: "default", name: "default")
 
 public var users = [billGates, joeBiden, katyPerry, timCook, mkbhd, lisaJackson]
-//public var users = [User]()
 
 public struct Post {
     let id = UUID()
