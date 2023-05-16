@@ -29,7 +29,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7I5-eH-n7y">
-                    <rect key="frame" x="120" y="134" width="257" height="65"/>
+                    <rect key="frame" x="120" y="134" width="257" height="140"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <color key="textColor" systemColor="labelColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -43,7 +43,7 @@
                 <constraint firstItem="z1r-S2-9yb" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="50" id="4M8-JI-dfh"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="7I5-eH-n7y" secondAttribute="trailing" constant="16" id="6fh-X1-ZYT"/>
                 <constraint firstItem="wA2-wh-R2p" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="50" id="CzA-4c-Qz5"/>
-                <constraint firstItem="7I5-eH-n7y" firstAttribute="bottom" secondItem="z1r-S2-9yb" secondAttribute="bottom" id="KJu-Vb-DrC"/>
+                <constraint firstItem="7I5-eH-n7y" firstAttribute="bottom" secondItem="z1r-S2-9yb" secondAttribute="bottom" constant="75" id="KJu-Vb-DrC"/>
                 <constraint firstItem="wA2-wh-R2p" firstAttribute="leading" secondItem="z1r-S2-9yb" secondAttribute="trailing" constant="15" id="Mzb-gG-Qw1"/>
                 <constraint firstItem="7I5-eH-n7y" firstAttribute="top" secondItem="wA2-wh-R2p" secondAttribute="bottom" constant="8" symbolic="YES" id="UTG-vD-wYl"/>
                 <constraint firstItem="7I5-eH-n7y" firstAttribute="leading" secondItem="z1r-S2-9yb" secondAttribute="trailing" constant="10" id="svh-76-6H2"/>

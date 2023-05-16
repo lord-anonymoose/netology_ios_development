@@ -16,6 +16,7 @@ class PostViewController: UIViewController {
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.userName.text = post.user.name
         view.text.text = post.text
+        view.text.sizeToFit()
         view.userImageView?.image = UIImage(named: post.user.login)
         return view
     }
@@ -32,5 +33,19 @@ class PostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(postView)
+        let infoButton = UIButton(type: .system)
+        infoButton.setTitle("Info", for: .normal)
+        infoButton.addTarget(self, action: #selector(infoButtonPressed(_:)), for: .touchUpInside)
+        let barButtonItem = UIBarButtonItem(customView: infoButton)
+        navigationItem.rightBarButtonItem = barButtonItem
+    }
+    
+    @objc func infoButtonPressed(_ sender: UIButton) {
+        let infoViewController = InfoViewController()
+        infoViewController.title = "Information"
+        
+        let navigationController = UINavigationController(rootViewController: infoViewController)
+        
+        present(navigationController, animated: true)
     }
 }
