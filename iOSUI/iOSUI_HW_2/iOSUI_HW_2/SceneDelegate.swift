@@ -10,21 +10,27 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    
+    @objc func buttonPressed(_ sender: UIButton) {
+        let postViewController = PostViewController(post: posts[sender.tag])
+        
+        postViewController.modalTransitionStyle = .flipHorizontal // flipHorizontal
+        postViewController.modalPresentationStyle = .pageSheet // pageSheet
+        print("Hello, world!")
+    }
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
                                             
-        //let feedViewController = UINavigationController(rootViewController: FeedViewController())
-        //let feedViewController = PostViewController(post: posts[4])
         let feedViewController = FeedViewController()
         feedViewController.title = "Feed"
+        feedViewController.view.addSubview(FeedView())
         let feedImage = UIImage(systemName: "house.circle")
-            
-        //let profileViewController = UINavigationController(rootViewController: ProfileViewController())
+        
         let profileViewController = ProfileViewController()
         profileViewController.title = "Profile"
         let profileImage = UIImage(systemName: "person.circle")
-                
+                    
         let window = UIWindow(windowScene: scene)
 
         let tabBarController = UITabBarController()
@@ -36,7 +42,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         tabBarController.viewControllers = controllers.map {
             UINavigationController(rootViewController: $0)
         }
-                
+        
         tabBarController.selectedIndex = 0
         
         window.rootViewController = tabBarController
