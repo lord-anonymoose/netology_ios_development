@@ -11,22 +11,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
-                        
-        let window = UIWindow(windowScene: scene)
-                    
-        let feedViewController = ViewController()
-        feedViewController.title = "Home"
-        feedViewController.view.backgroundColor = .systemOrange
+                                            
+        //let feedViewController = UINavigationController(rootViewController: FeedViewController())
+        //let feedViewController = PostViewController(post: posts[4])
+        let feedViewController = FeedViewController()
+        feedViewController.title = "Feed"
         let feedImage = UIImage(systemName: "house.circle")
             
+        //let profileViewController = UINavigationController(rootViewController: ProfileViewController())
         let profileViewController = ProfileViewController()
         profileViewController.title = "Profile"
-        profileViewController.view.backgroundColor = .systemYellow
         let profileImage = UIImage(systemName: "person.circle")
-                    
+                
+        let window = UIWindow(windowScene: scene)
+
         let tabBarController = UITabBarController()
                         
         feedViewController.tabBarItem = UITabBarItem(title: nil, image: feedImage, tag: 0)

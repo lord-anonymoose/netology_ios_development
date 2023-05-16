@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FeedView" customModule="iOSUI_HW_2" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="wzr-eH-jMs">
+                    <rect key="frame" x="10" y="59" width="373" height="34.333333333333343"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="post1"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nPp-40-lwm">
+                    <rect key="frame" x="10" y="123.33333333333333" width="373" height="34.333333333333329"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="post2"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G16-yO-Dbb">
+                    <rect key="frame" x="10" y="187.66666666666666" width="373" height="34.333333333333343"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="post3"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3B2-4u-H5a">
+                    <rect key="frame" x="10" y="316.33333333333331" width="373" height="34.333333333333314"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="post5"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WN5-yH-BhE">
+                    <rect key="frame" x="10" y="380.66666666666669" width="373" height="34.333333333333314"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="post6"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="62h-1C-uHe">
+                    <rect key="frame" x="10" y="252.00000000000003" width="373" height="34.333333333333343"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="post4"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tf3-ua-EK8">
+                    <rect key="frame" x="10" y="445" width="373" height="34.333333333333314"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="post7"/>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="Tf3-ua-EK8" firstAttribute="top" secondItem="WN5-yH-BhE" secondAttribute="bottom" constant="30" id="1Ol-Eg-oHg"/>
+                <constraint firstItem="62h-1C-uHe" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="2zG-XL-IPi"/>
+                <constraint firstItem="3B2-4u-H5a" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="47z-vn-Ep5"/>
+                <constraint firstItem="3B2-4u-H5a" firstAttribute="top" secondItem="62h-1C-uHe" secondAttribute="bottom" constant="30" id="4fS-of-ajZ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="WN5-yH-BhE" secondAttribute="trailing" constant="10" id="6a1-iC-aYd"/>
+                <constraint firstItem="Tf3-ua-EK8" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="ApF-vf-Kmm"/>
+                <constraint firstItem="62h-1C-uHe" firstAttribute="top" secondItem="G16-yO-Dbb" secondAttribute="bottom" constant="30" id="L6f-2I-lsX"/>
+                <constraint firstItem="wzr-eH-jMs" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="Lce-xl-eAG"/>
+                <constraint firstItem="3B2-4u-H5a" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="MIc-MC-yWA"/>
+                <constraint firstItem="G16-yO-Dbb" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="PUf-aL-mZm"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="3B2-4u-H5a" secondAttribute="trailing" constant="10" id="PzS-43-Sdq"/>
+                <constraint firstItem="G16-yO-Dbb" firstAttribute="top" secondItem="nPp-40-lwm" secondAttribute="bottom" constant="30" id="S5n-Al-PcJ"/>
+                <constraint firstItem="nPp-40-lwm" firstAttribute="top" secondItem="wzr-eH-jMs" secondAttribute="bottom" constant="30" id="Uzv-hl-kOS"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="wzr-eH-jMs" secondAttribute="trailing" constant="10" id="VE3-Ij-bNw"/>
+                <constraint firstItem="wzr-eH-jMs" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="ZQJ-Jp-OqG"/>
+                <constraint firstItem="nPp-40-lwm" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="cH9-We-Akp"/>
+                <constraint firstItem="G16-yO-Dbb" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="g1o-TS-wfw"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="nPp-40-lwm" secondAttribute="trailing" constant="10" id="gKc-76-Vjn"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Tf3-ua-EK8" secondAttribute="trailing" constant="10" id="oBe-DH-HTC"/>
+                <constraint firstItem="Tf3-ua-EK8" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="p5J-5M-0u9"/>
+                <constraint firstItem="62h-1C-uHe" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="pT7-dG-JCo"/>
+                <constraint firstItem="WN5-yH-BhE" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="ppP-ex-vUr"/>
+                <constraint firstItem="wzr-eH-jMs" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="shm-Tl-MTP"/>
+                <constraint firstItem="WN5-yH-BhE" firstAttribute="top" secondItem="3B2-4u-H5a" secondAttribute="bottom" constant="30" id="top-KN-LDe"/>
+                <constraint firstItem="WN5-yH-BhE" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="uG9-BU-3UG"/>
+                <constraint firstItem="nPp-40-lwm" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="wMb-Dl-knf"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="G16-yO-Dbb" secondAttribute="trailing" constant="10" id="xMh-vr-zZe"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="62h-1C-uHe" secondAttribute="trailing" constant="10" id="yjb-Hx-Mtj"/>
+            </constraints>
+            <connections>
+                <outlet property="button1" destination="wzr-eH-jMs" id="ICJ-Fx-fb7"/>
+                <outlet property="button2" destination="nPp-40-lwm" id="yOf-TD-Ezg"/>
+                <outlet property="button3" destination="G16-yO-Dbb" id="3Df-qK-Tc3"/>
+                <outlet property="button4" destination="62h-1C-uHe" id="gQv-ZF-jYW"/>
+                <outlet property="button5" destination="3B2-4u-H5a" id="2M6-a7-oZZ"/>
+                <outlet property="button6" destination="WN5-yH-BhE" id="gCU-Wz-kMU"/>
+                <outlet property="button7" destination="Tf3-ua-EK8" id="Ixc-v8-6Wm"/>
+            </connections>
+            <point key="canvasLocation" x="22.137404580152669" y="20.422535211267608"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

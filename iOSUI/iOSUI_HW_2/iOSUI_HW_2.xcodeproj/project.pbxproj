@@ -16,6 +16,12 @@
 		8E7FD06A2A0E62100017FA70 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7FD0692A0E62100017FA70 /* ProfileViewController.swift */; };
 		8EC0B2CD2A0E68EC004BBCC8 /* profileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EC0B2CC2A0E68EC004BBCC8 /* profileView.xib */; };
 		8EC0B2CF2A0E7101004BBCC8 /* Structures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC0B2CE2A0E7101004BBCC8 /* Structures.swift */; };
+		8EE58FD72A12D77F00599ED0 /* postView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EE58FD62A12D77F00599ED0 /* postView.xib */; };
+		8EE58FD92A12D79300599ED0 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE58FD82A12D79300599ED0 /* PostView.swift */; };
+		8EE58FDB2A12D7A000599ED0 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE58FDA2A12D7A000599ED0 /* PostViewController.swift */; };
+		8EE96A412A12F76400061A86 /* feedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EE96A402A12F76400061A86 /* feedView.xib */; };
+		8EE96A432A12F77B00061A86 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE96A422A12F77B00061A86 /* FeedViewController.swift */; };
+		8EE96A452A12F79000061A86 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE96A442A12F79000061A86 /* FeedView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +36,12 @@
 		8E7FD0692A0E62100017FA70 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		8EC0B2CC2A0E68EC004BBCC8 /* profileView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = profileView.xib; sourceTree = "<group>"; };
 		8EC0B2CE2A0E7101004BBCC8 /* Structures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structures.swift; sourceTree = "<group>"; };
+		8EE58FD62A12D77F00599ED0 /* postView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = postView.xib; sourceTree = "<group>"; };
+		8EE58FD82A12D79300599ED0 /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
+		8EE58FDA2A12D7A000599ED0 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		8EE96A402A12F76400061A86 /* feedView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = feedView.xib; sourceTree = "<group>"; };
+		8EE96A422A12F77B00061A86 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		8EE96A442A12F79000061A86 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,11 +79,17 @@
 				8E7FD0532A0E60920017FA70 /* ViewController.swift */,
 				8E7FD0582A0E60920017FA70 /* Assets.xcassets */,
 				8E7FD05A2A0E60920017FA70 /* LaunchScreen.storyboard */,
-				8E7FD0672A0E617D0017FA70 /* ProfileView.swift */,
-				8E7FD0692A0E62100017FA70 /* ProfileViewController.swift */,
 				8EC0B2CE2A0E7101004BBCC8 /* Structures.swift */,
 				8EC0B2CC2A0E68EC004BBCC8 /* profileView.xib */,
+				8E7FD0672A0E617D0017FA70 /* ProfileView.swift */,
+				8E7FD0692A0E62100017FA70 /* ProfileViewController.swift */,
+				8EE58FD62A12D77F00599ED0 /* postView.xib */,
+				8EE58FD82A12D79300599ED0 /* PostView.swift */,
+				8EE58FDA2A12D7A000599ED0 /* PostViewController.swift */,
 				8E7FD05D2A0E60920017FA70 /* Info.plist */,
+				8EE96A402A12F76400061A86 /* feedView.xib */,
+				8EE96A422A12F77B00061A86 /* FeedViewController.swift */,
+				8EE96A442A12F79000061A86 /* FeedView.swift */,
 			);
 			path = iOSUI_HW_2;
 			sourceTree = "<group>";
@@ -134,8 +152,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EE96A412A12F76400061A86 /* feedView.xib in Resources */,
 				8E7FD05C2A0E60920017FA70 /* LaunchScreen.storyboard in Resources */,
 				8E7FD0592A0E60920017FA70 /* Assets.xcassets in Resources */,
+				8EE58FD72A12D77F00599ED0 /* postView.xib in Resources */,
 				8EC0B2CD2A0E68EC004BBCC8 /* profileView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,8 +167,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EE96A452A12F79000061A86 /* FeedView.swift in Sources */,
+				8EE58FDB2A12D7A000599ED0 /* PostViewController.swift in Sources */,
+				8EE96A432A12F77B00061A86 /* FeedViewController.swift in Sources */,
 				8E7FD0682A0E617D0017FA70 /* ProfileView.swift in Sources */,
 				8EC0B2CF2A0E7101004BBCC8 /* Structures.swift in Sources */,
+				8EE58FD92A12D79300599ED0 /* PostView.swift in Sources */,
 				8E7FD0542A0E60920017FA70 /* ViewController.swift in Sources */,
 				8E7FD06A2A0E62100017FA70 /* ProfileViewController.swift in Sources */,
 				8E7FD0502A0E60920017FA70 /* AppDelegate.swift in Sources */,
@@ -220,7 +244,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -274,7 +298,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

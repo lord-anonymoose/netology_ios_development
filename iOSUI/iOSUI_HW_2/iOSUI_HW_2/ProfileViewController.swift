@@ -17,12 +17,12 @@ class ProfileViewController: UIViewController {
         if let randomElement = users.randomElement() {
             user = randomElement
         } else {
-            user = User(login: "default", name: "default")
+            user = defaultUser
         }
         
         guard let profileView = Bundle.main.loadNibNamed("profileView", owner: self, options: nil)?.first as? ProfileView else {
                     fatalError("Unable to load ProfileView from nib")
-                }
+        }
         
         profileView.frame = view.bounds
         profileView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
