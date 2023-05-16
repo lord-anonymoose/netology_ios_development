@@ -76,7 +76,7 @@ class FeedViewController: UIViewController {
         let postViewController = PostViewController(post: posts[sender.tag])
         postViewController.title = "@\(posts[sender.tag].user.login)"
         
-        var navigationController = UINavigationController(rootViewController: postViewController)
+        let navigationController = UINavigationController(rootViewController: postViewController)
         present(navigationController, animated: true)
     }
     

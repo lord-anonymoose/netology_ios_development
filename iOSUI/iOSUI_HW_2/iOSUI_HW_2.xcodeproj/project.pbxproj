@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E6191722A138A9400863715 /* infoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E6191712A138A9400863715 /* infoView.xib */; };
+		8E6191742A138AA900863715 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6191732A138AA900863715 /* InfoView.swift */; };
+		8E6191762A138AC000863715 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6191752A138AC000863715 /* InfoViewController.swift */; };
 		8E7FD0502A0E60920017FA70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7FD04F2A0E60920017FA70 /* AppDelegate.swift */; };
 		8E7FD0522A0E60920017FA70 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7FD0512A0E60920017FA70 /* SceneDelegate.swift */; };
 		8E7FD0542A0E60920017FA70 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7FD0532A0E60920017FA70 /* ViewController.swift */; };
@@ -25,6 +28,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8E6191712A138A9400863715 /* infoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = infoView.xib; sourceTree = "<group>"; };
+		8E6191732A138AA900863715 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		8E6191752A138AC000863715 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		8E7FD04C2A0E60920017FA70 /* iOSUI_HW_2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSUI_HW_2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E7FD04F2A0E60920017FA70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E7FD0512A0E60920017FA70 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,10 +92,13 @@
 				8EE58FD62A12D77F00599ED0 /* postView.xib */,
 				8EE58FD82A12D79300599ED0 /* PostView.swift */,
 				8EE58FDA2A12D7A000599ED0 /* PostViewController.swift */,
-				8E7FD05D2A0E60920017FA70 /* Info.plist */,
 				8EE96A402A12F76400061A86 /* feedView.xib */,
-				8EE96A422A12F77B00061A86 /* FeedViewController.swift */,
 				8EE96A442A12F79000061A86 /* FeedView.swift */,
+				8EE96A422A12F77B00061A86 /* FeedViewController.swift */,
+				8E6191712A138A9400863715 /* infoView.xib */,
+				8E6191732A138AA900863715 /* InfoView.swift */,
+				8E6191752A138AC000863715 /* InfoViewController.swift */,
+				8E7FD05D2A0E60920017FA70 /* Info.plist */,
 			);
 			path = iOSUI_HW_2;
 			sourceTree = "<group>";
@@ -152,6 +161,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E6191722A138A9400863715 /* infoView.xib in Resources */,
 				8EE96A412A12F76400061A86 /* feedView.xib in Resources */,
 				8E7FD05C2A0E60920017FA70 /* LaunchScreen.storyboard in Resources */,
 				8E7FD0592A0E60920017FA70 /* Assets.xcassets in Resources */,
@@ -168,6 +178,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EE96A452A12F79000061A86 /* FeedView.swift in Sources */,
+				8E6191742A138AA900863715 /* InfoView.swift in Sources */,
 				8EE58FDB2A12D7A000599ED0 /* PostViewController.swift in Sources */,
 				8EE96A432A12F77B00061A86 /* FeedViewController.swift in Sources */,
 				8E7FD0682A0E617D0017FA70 /* ProfileView.swift in Sources */,
@@ -176,6 +187,7 @@
 				8E7FD0542A0E60920017FA70 /* ViewController.swift in Sources */,
 				8E7FD06A2A0E62100017FA70 /* ProfileViewController.swift in Sources */,
 				8E7FD0502A0E60920017FA70 /* AppDelegate.swift in Sources */,
+				8E6191762A138AC000863715 /* InfoViewController.swift in Sources */,
 				8E7FD0522A0E60920017FA70 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

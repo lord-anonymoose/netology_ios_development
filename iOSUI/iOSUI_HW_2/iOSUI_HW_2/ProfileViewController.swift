@@ -8,28 +8,28 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-    private var profileView: ProfileView!
+    
+    private var user = katyPerry
+    
+    private var profileView: ProfileView {
+        let view = Bundle.main.loadNibNamed("profileView", owner: nil)?.first as! ProfileView
+        view.frame = view.bounds
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.userLogin?.text = "@\(user.login)"
+        view.userName.text = user.name
+        view.userImageView?.image = UIImage(named: user.login)
+        return view
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        var user: User
-        if let randomElement = users.randomElement() {
-            user = randomElement
-        } else {
-            user = defaultUser
-        }
-        
-        guard let profileView = Bundle.main.loadNibNamed("profileView", owner: self, options: nil)?.first as? ProfileView else {
-                    fatalError("Unable to load ProfileView from nib")
-        }
         
         profileView.frame = view.bounds
         profileView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         profileView.userLogin?.text = "@\(user.login)"
         profileView.userName.text = user.name
         profileView.userImageView?.image = UIImage(named: user.login)
+        
         view.addSubview(profileView)
-        self.profileView = profileView
     }
 }
